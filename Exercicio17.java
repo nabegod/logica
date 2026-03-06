@@ -1,5 +1,5 @@
-/* Faça um programa que leia um conjunto não determinado de valores e mostre o valor lido, seu quadrado, seu cubo e sua raiz quadrada. 
- * Finalize a entrada de dados com um valor negativo ou zero. */
+/* Programa que lê valores e mostra quadrado, cubo e raiz quadrada. 
+   Finaliza quando valor <= 0 */
 
 import java.util.Scanner;
 import java.lang.Math;
@@ -11,15 +11,25 @@ public class Exercicio17 {
 		int num;
 		double quadrado, cubo, raiz;
 		
-		System.out.print("Digite um número maior do que 0: ");
-		num = input.nextInt();
-		
-		quadrado = Math.pow(num, 2);
-		cubo = Math.pow(num, 3);
-		raiz = Math.sqrt(num);
-		
-		//escreva seu código aqui
+		do {
+			System.out.print("Digite um número maior do que 0 (ou 0/negativo para sair): ");
+			num = input.nextInt();
 			
+			if (num > 0) {
+				quadrado = Math.pow(num, 2);
+				cubo = Math.pow(num, 3);
+				raiz = Math.sqrt(num);
+				
+				System.out.println("Número: " + num);
+				System.out.println("Quadrado: " + quadrado);
+				System.out.println("Cubo: " + cubo);
+				System.out.println("Raiz quadrada: " + raiz);
+				System.out.println("---------------------------");
+			}
+			
+		} while (num > 0);
+		
+		System.out.println("Programa encerrado.");
 		input.close();
 	}
 }

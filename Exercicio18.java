@@ -1,27 +1,4 @@
-/* 
-Uma empresa possui dez funcionários com as seguintes características: código, número de horas trabalhadas no mês, turno de trabalho (M – Matutino, V – Vespertino ou N – Noturno), categoria (O – Operário ou G – Gerente), valor da hora trabalhada. Sabendo-se que essa empresa deseja informatizar sua folha de pagamento, faça um programa que: 
-a) leia as informações dos funcionários, exceto o valor da hora trabalhada, não permitindo que sejam informados 
-turnos nem categoria inexistentes. Trabalhe sempre com a digitação de letras maiúsculas; 
-b) calcule o valor da hora trabalhada, conforme a tabela a seguir. Adote o valor de R$ 450,00 para o salário mínimo. 
- 
-Categoria  Turno  Valor da hora trabalhada 
-G  N  18% do salário mínimo 
-G  M ou V  15% do salário mínimo 
-O  N  13% do salário mínimo 
-O  M ou V  10% do salário mínimo 
- 
-c) calcule o salário inicial dos funcionários com base no valor da hora trabalhada e no número de horas trabalhadas; 
-d) calcule o valor do auxílio-alimentação recebido por funcionário de acordo com o seu salário inicial, conforme a tabela a 
-seguir. 
-
-| Salário Inicial             |  Auxílio-Alimentação 
-| Até R$ 300,00           | 20% do salário inicial 
-| Entre R$ 300,00        |  e R$ 600,00  15% do salário inicial 
-| Acima de R$ 600,00 |  5% do salário inicial 
-
-e) mostre o código, número de horas trabalhadas, valor da hora trabalhada, salário inicial, auxílio-alimentação e salário 
-final (salário inicial + auxilio-alimentação). 
- */
+/* Programa de folha de pagamento para 10 funcionários */
 
 import java.util.Scanner;
 
@@ -32,8 +9,9 @@ public class Exercicio18 {
 		int codigo, horasTrabalhadas, qtdeFuncionarios = 10;
 		char turno, categoria;
 		double valorHora, salarioInicial, auxilioAlimentacao;
+		double salarioMinimo = 450.00;
 		
-		for (int i = qtdeFuncionarios; i > 0; i-- ) {
+		for (int i = 0; i < qtdeFuncionarios; i++ ) {
 			turno = 'X';
 			categoria = 'X';
 		
@@ -41,28 +19,60 @@ public class Exercicio18 {
 			codigo = input.nextInt();
 			
 			System.out.print("Turno (M - matutino, V - vespertino ou N - noturno): ");
-			
 			while (turno != 'M' && turno != 'V' && turno != 'N') {
 				turno = input.next().charAt(0);
-				
 				if (turno != 'M' && turno != 'V' && turno != 'N') {
-					System.out.println("Turno inválido"); }
+					System.out.println("Turno inválido. Digite novamente:");
+				}
 			}
 			
 			System.out.print("Insira a categoria do funcionário (O - operário ou G - gerente): ");
-			
 			while (categoria != 'G' && categoria != 'O') {
 				categoria = input.next().charAt(0);
-				
 				if (categoria != 'G' && categoria != 'O') {
-					System.out.println("Categoria inválida"); }
+					System.out.println("Categoria inválida. Digite novamente:");
+				}
 			}
 			
+			System.out.print("Insira o número de horas trabalhadas: ");
+			horasTrabalhadas = input.nextInt();
 			
+			// --- Calculando valor da hora ---
+			if (categoria == 'G') {
+				if (turno == 'N') {
+					valorHora = 0.18 * salarioMinimo;
+				} else { // M ou V
+					valorHora = 0.15 * salarioMinimo;
+				}
+			} else { // categoria O
+				if (turno == 'N') {
+					valorHora = 0.13 * salarioMinimo;
+				} else { // M ou V
+					valorHora = 0.10 * salarioMinimo;
+				}
+			}
 			
-			double salarioMinimo = 450.00;
+			// --- Calculando salário inicial ---
+			salarioInicial = valorHora * horasTrabalhadas;
 			
-			 //escreva seu código aqui
+			// --- Calculando auxílio-alimentação ---
+			if (salarioInicial <= 300) {
+				auxilioAlimentacao = 0.20 * salarioInicial;
+			} else if (salarioInicial <= 600) {
+				auxilioAlimentacao = 0.15 * salarioInicial;
+			} else {
+				auxilioAlimentacao = 0.05 * salarioInicial;
+			}
+			
+			// --- Exibindo resultados ---
+			System.out.println("\n--- Folha do Funcionário ---");
+			System.out.println("Código: " + codigo);
+			System.out.println("Horas trabalhadas: " + horasTrabalhadas);
+			System.out.printf("Valor da hora trabalhada: R$ %.2f\n", valorHora);
+			System.out.printf("Salário inicial: R$ %.2f\n", salarioInicial);
+			System.out.printf("Auxílio-alimentação: R$ %.2f\n", auxilioAlimentacao);
+			System.out.printf("Salário final: R$ %.2f\n", salarioInicial + auxilioAlimentacao);
+			System.out.println("-------------------------------\n");
 		}
 
 		input.close();

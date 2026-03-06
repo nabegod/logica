@@ -10,12 +10,23 @@ public class Exercicio1 {
 		 int x, y; // primeiro número e segundo número 
 		 int soma, subt, div, mult; // operações  
 		 
-		 System.out.print("Digite o primeiro número:" );   
+		 System.out.print("Digite o primeiro número: ");   
 		 x = input.nextInt();   
-		 System.out.print("Digite o segundo número:" );   
+		 
+		 System.out.print("Digite o segundo número: ");   
 		 y = input.nextInt();   
 		 
-		 //escreva seu código aqui
+		 // operações
+		 soma = x + y;
+		 subt = x - y;
+		 mult = x * y;
+		 div = x / y;
+		 
+		 // resultados
+		 System.out.println("Soma: " + soma);
+		 System.out.println("Subtração: " + subt);
+		 System.out.println("Multiplicação: " + mult);
+		 System.out.println("Divisão: " + div);
 
 		 input.close();
 	}

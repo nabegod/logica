@@ -1,16 +1,34 @@
-/* Escreva um programa que leia o valor de 3 ângulos de um triângulo e escreva se o triângulo é Acutângulo, Retângulo ou Obtusângulo.
-* Triângulo Retângulo: possui um ângulo reto. (igual a 90º)
-* Triângulo Obtusângulo: possui um ângulo obtuso. (maior que90º)
-* Triângulo Acutângulo: possui três ângulos agudos. (menor que 90º) */
+/* Programa para classificar triângulo pelos ângulos */
 
 import java.util.Scanner;
 
 public class Exercicio28 {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		
-		 //escreva seu código aqui
-		
+
+		int ang1, ang2, ang3;
+
+		System.out.print("Digite o primeiro ângulo (em graus): ");
+		ang1 = input.nextInt();
+
+		System.out.print("Digite o segundo ângulo (em graus): ");
+		ang2 = input.nextInt();
+
+		System.out.print("Digite o terceiro ângulo (em graus): ");
+		ang3 = input.nextInt();
+
+		int soma = ang1 + ang2 + ang3;
+
+		if (soma != 180) {
+			System.out.println("Ângulos inválidos para um triângulo.");
+		} else if (ang1 == 90 || ang2 == 90 || ang3 == 90) {
+			System.out.println("Triângulo Retângulo");
+		} else if (ang1 > 90 || ang2 > 90 || ang3 > 90) {
+			System.out.println("Triângulo Obtusângulo");
+		} else { // todos < 90
+			System.out.println("Triângulo Acutângulo");
+		}
+
 		input.close();
 	}
 }

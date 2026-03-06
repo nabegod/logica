@@ -7,8 +7,18 @@ public class Exercicio7 {
 	public static void main(String[] args) {
 		 Scanner input = new Scanner(System.in); 
 		 
-		 //escreva seu código aqui		 
+		 double deposito;
+		 double rendimento;
+		 double valorFinal;
+		 
+		 System.out.print("Digite o valor depositado: ");
+		 deposito = input.nextDouble();
+		 
+		 rendimento = deposito * 0.007;
+		 valorFinal = deposito + rendimento;
+		 
+		 System.out.println("Valor após 1 mês: R$ " + valorFinal);
 
-		input.close();
+		 input.close();
 	}
 }

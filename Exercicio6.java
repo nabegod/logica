@@ -7,8 +7,20 @@ public class Exercicio6 {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		
-		 //escreva seu código aqui
+		double cotacao;
+		double dolares;
+		double reais;
+		
+		System.out.print("Digite a cotação do dólar: ");
+		cotacao = input.nextDouble();
+		
+		System.out.print("Digite a quantidade de dólares: ");
+		dolares = input.nextDouble();
+		
+		reais = dolares * cotacao;
+		
+		System.out.println("Valor em reais: R$ " + reais);
 
-		 input.close();
+		input.close();
 	}
 }
